@@ -14,17 +14,15 @@ const persistConfig = {
 
 const persistedCountReducer = persistReducer(persistConfig, persistedCounterReducer);
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     counter: counterReducer, // Add your slice reducer here
     persistedCounter: persistedCountReducer, // Add your slice reducer here
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware({
-    // TODO :: need to remove all not serializable and immutable objects from state
     serializableCheck: false,
     immutableCheck: false,
   }),
 });
-const counterPersistor = persistStore(store);
+export const persister = persistStore(store);
 
-export default {store, counterPersistor};

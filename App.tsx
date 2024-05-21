@@ -1,15 +1,15 @@
 // App.tsx
 import { StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
-import store from './store';
+import {store, persister} from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import MyComponent from './MyComponent';
 
 export default function App() {
   return (
-    <Provider store={store.store}>
-      <PersistGate loading={null} persistor={store.counterPersistor}>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persister}>
         <View style={styles.container}>
           <MyComponent />
         </View>
